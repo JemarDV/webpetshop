@@ -159,7 +159,7 @@ export const products = [
     description: 'Mezcla gourmet de semillas y frutas deshidratadas para canarios y periquitos.',
     price: 15.99,
     originalPrice: null,
-    image: 'https://images.unsplash.com/photo-1591198936750-16d8e15edb9c?w=400&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=400&h=400&fit=crop',
     category: 'birds',
     rating: 4.3,
     reviews: 89,
