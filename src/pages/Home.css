@@ -1,0 +1,179 @@
+/* Home Page Styles */
+
+/* Categories */
+.section-heading--center {
+  justify-content: center;
+  text-align: center;
+}
+
+.section-heading--center .section-heading__subtitle {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.categories {
+  background: var(--bg-dark-2);
+}
+
+.categories__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-lg);
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-sm);
+  padding: var(--space-2xl) var(--space-lg);
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--category-color);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+}
+
+.category-card__emoji {
+  font-size: 3rem;
+  animation: float 4s ease-in-out infinite;
+}
+
+.category-card__name {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.category-card__description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.category-card__cta {
+  margin-top: var(--space-sm);
+  color: var(--category-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Featured */
+.featured {
+  background: var(--bg-dark);
+}
+
+/* Testimonials */
+.testimonials {
+  background: var(--bg-dark-2);
+}
+
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+}
+
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-xl);
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  transition: transform var(--transition-base);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-4px);
+}
+
+.testimonial-card__stars {
+  color: #ffb400;
+  letter-spacing: 3px;
+}
+
+.testimonial-card__text {
+  color: var(--text-secondary);
+  font-style: italic;
+  flex: 1;
+}
+
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.testimonial-card__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-card__name {
+  display: block;
+  font-weight: 600;
+}
+
+.testimonial-card__pet {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* CTA */
+.cta {
+  padding: var(--space-4xl) 0;
+  background:
+    radial-gradient(ellipse at 50% 120%, rgba(255, 107, 53, 0.25), transparent 60%),
+    var(--bg-dark-3);
+}
+
+.cta__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-md);
+}
+
+.cta__title {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 800;
+}
+
+.cta__subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.cta__checks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-lg);
+  margin: var(--space-md) 0;
+}
+
+.cta__checks span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.cta__checks svg {
+  color: var(--color-secondary);
+}
+
+.cta__button {
+  font-size: 1.05rem;
+  padding: var(--space-md) var(--space-2xl);
+}
