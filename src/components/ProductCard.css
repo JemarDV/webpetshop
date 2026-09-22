@@ -54,6 +54,12 @@
   transform: scale(1.08);
 }
 
+.product-card__wishlist--active {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: rgba(255, 51, 102, 0.15);
+}
+
 .product-card__image-link {
   display: block;
   aspect-ratio: 1 / 1;

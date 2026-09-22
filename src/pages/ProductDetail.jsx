@@ -12,14 +12,17 @@ import {
   FiPackage,
   FiShield,
 } from 'react-icons/fi';
+import { FaHeart } from 'react-icons/fa';
 import { products, categories } from '../data/products';
 import { useCart } from '../context/CartContext';
+import { useWishlist } from '../context/WishlistContext';
 import ProductCard from '../components/ProductCard';
 import './ProductDetail.css';
 
 function ProductDetail() {
   const { id } = useParams();
   const { addToCart } = useCart();
+  const { isInWishlist, toggleWishlist } = useWishlist();
   const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
 
@@ -170,10 +173,15 @@ function ProductDetail() {
             </button>
             <button
               type="button"
-              className="pd__wishlist"
-              aria-label={`Agregar ${product.name} a favoritos`}
+              className={`pd__wishlist ${isInWishlist(product.id) ? 'pd__wishlist--active' : ''}`}
+              aria-label={
+                isInWishlist(product.id)
+                  ? `Quitar ${product.name} de favoritos`
+                  : `Agregar ${product.name} a favoritos`
+              }
+              onClick={() => toggleWishlist(product)}
             >
-              <FiHeart />
+              {isInWishlist(product.id) ? <FaHeart /> : <FiHeart />}
             </button>
           </div>
 

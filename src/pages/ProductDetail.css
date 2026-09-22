@@ -196,6 +196,12 @@
   transform: scale(1.08);
 }
 
+.pd__wishlist--active {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: rgba(255, 51, 102, 0.15);
+}
+
 .pd__features {
   display: flex;
   flex-direction: column;

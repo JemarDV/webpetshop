@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiStar, FiHeart, FiShoppingCart, FiCheck } from 'react-icons/fi';
+import { FaHeart } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
+import { useWishlist } from '../context/WishlistContext';
 import './ProductCard.css';
 
 function ProductCard({ product }) {
   const { addToCart } = useCart();
+  const { isInWishlist, toggleWishlist } = useWishlist();
   const [added, setAdded] = useState(false);
+  const favorite = isInWishlist(product.id);
 
   const handleAdd = () => {
     addToCart(product);
@@ -20,10 +24,15 @@ function ProductCard({ product }) {
         <span className="product-card__badge">{product.badge}</span>
       )}
       <button
-        className="product-card__wishlist"
-        aria-label={`Agregar ${product.name} a favoritos`}
+        className={`product-card__wishlist ${favorite ? 'product-card__wishlist--active' : ''}`}
+        aria-label={
+          favorite
+            ? `Quitar ${product.name} de favoritos`
+            : `Agregar ${product.name} a favoritos`
+        }
+        onClick={() => toggleWishlist(product)}
       >
-        <FiHeart />
+        {favorite ? <FaHeart /> : <FiHeart />}
       </button>
       <Link to={`/product/${product.id}`} className="product-card__image-link">
         <img

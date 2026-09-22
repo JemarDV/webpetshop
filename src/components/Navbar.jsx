@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FiShoppingCart, FiMenu, FiX } from 'react-icons/fi';
+import { FiShoppingCart, FiMenu, FiX, FiHeart } from 'react-icons/fi';
 import { FaPaw } from 'react-icons/fa';
 import { useCart } from '../context/CartContext';
+import { useWishlist } from '../context/WishlistContext';
 import './Navbar.css';
 
 function Navbar() {
   const { cartCount } = useCart();
+  const { wishlistCount } = useWishlist();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
@@ -54,6 +56,18 @@ function Navbar() {
         </ul>
 
         <div className="navbar__actions">
+          <Link
+            to="/wishlist"
+            className="navbar__cart"
+            aria-label="Ver favoritos"
+          >
+            <FiHeart />
+            {wishlistCount > 0 && (
+              <span className="navbar__cart-badge navbar__cart-badge--heart">
+                {wishlistCount}
+              </span>
+            )}
+          </Link>
           <Link to="/cart" className="navbar__cart" id="navbar-cart">
             <FiShoppingCart />
             {cartCount > 0 && (

@@ -129,6 +129,10 @@
   justify-content: center;
 }
 
+.navbar__cart-badge--heart {
+  background: var(--color-accent);
+}
+
 .navbar__menu-toggle {
   display: none;
   align-items: center;
