@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FiShoppingCart, FiMenu, FiX } from 'react-icons/fi';
 import { FaPaw } from 'react-icons/fa';
+import { useCart } from '../context/CartContext';
 import './Navbar.css';
 
-function Navbar({ cartCount = 0 }) {
+function Navbar() {
+  const { cartCount } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
@@ -52,7 +54,7 @@ function Navbar({ cartCount = 0 }) {
         </ul>
 
         <div className="navbar__actions">
-          <Link to="/shop" className="navbar__cart" id="navbar-cart">
+          <Link to="/cart" className="navbar__cart" id="navbar-cart">
             <FiShoppingCart />
             {cartCount > 0 && (
               <span className="navbar__cart-badge">{cartCount}</span>

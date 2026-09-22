@@ -1,8 +1,19 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiStar, FiHeart, FiShoppingCart } from 'react-icons/fi';
+import { FiStar, FiHeart, FiShoppingCart, FiCheck } from 'react-icons/fi';
+import { useCart } from '../context/CartContext';
 import './ProductCard.css';
 
 function ProductCard({ product }) {
+  const { addToCart } = useCart();
+  const [added, setAdded] = useState(false);
+
+  const handleAdd = () => {
+    addToCart(product);
+    setAdded(true);
+    window.setTimeout(() => setAdded(false), 1500);
+  };
+
   return (
     <article className="product-card">
       {product.badge && (
@@ -14,7 +25,7 @@ function ProductCard({ product }) {
       >
         <FiHeart />
       </button>
-      <Link to="/shop" className="product-card__image-link">
+      <Link to={`/product/${product.id}`} className="product-card__image-link">
         <img
           src={product.image}
           alt={product.name}
@@ -30,7 +41,11 @@ function ProductCard({ product }) {
             ({product.reviews})
           </span>
         </div>
-        <h3 className="product-card__name">{product.name}</h3>
+        <h3 className="product-card__name">
+          <Link to={`/product/${product.id}`} className="product-card__name-link">
+            {product.name}
+          </Link>
+        </h3>
         <div className="product-card__footer">
           <div className="product-card__price">
             <span className="product-card__price-current">
@@ -43,10 +58,11 @@ function ProductCard({ product }) {
             )}
           </div>
           <button
-            className="product-card__add"
+            className={`product-card__add ${added ? 'product-card__add--added' : ''}`}
             aria-label={`Agregar ${product.name} al carrito`}
+            onClick={handleAdd}
           >
-            <FiShoppingCart />
+            {added ? <FiCheck /> : <FiShoppingCart />}
           </button>
         </div>
       </div>
